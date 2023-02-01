@@ -1,0 +1,1 @@
+for i in range(g:=int(input())):print((' '*i)+'*'*(g-i))
