@@ -17,22 +17,21 @@ for _ in range(n):
         matrix[points[i][0]][points[i][1]] = 1
     
     cnt = 0
-    
     while points:
-        x, y = points[0]
-        to_search = list((y, x))
+        y, x = points[0]
+        if not matrix[y][x]:
+            points.pop(0)
+            continue
+        cnt += 1
+        to_search = [[y, x]]
+        matrix[y][x] = 0
         while to_search:
+            y, x = to_search.pop(0)
             for i in range(4):
                 nx = x + dx[i]
                 ny = y + dy[i]
                 if 0 <= nx < w and 0 <= ny < h and matrix[ny][nx] == 1:
-                    if (ny, nx) not in searched:
-                        to_search.append((ny, nx))
-                        searched.append((ny, nx))
-            matrix[y][x] = 0
-            for p in range(len(points)):
-                if points[p] == (y, x):
-                    points.pop(p)
-        cnt += 1
+                    to_search.append([ny, nx])
+                    matrix[ny][nx] = 0
 
     print(cnt)
