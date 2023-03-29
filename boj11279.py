@@ -1,4 +1,5 @@
 import sys
+import heapq
 input = sys.stdin.readline
 
 n = int(input())
@@ -9,7 +10,6 @@ for _ in range(n):
         if not nlist:
             print(0)
             continue
-        nlist.sort(reverse=True)
-        print(nlist.pop())
+        print(-heapq.heappop(nlist))
         continue
-    nlist.append(ans)
+    heapq.heappush(nlist, -ans)
