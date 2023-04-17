@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     const int MAX = 26;
-    char input[100];
+    char input[101];
     int list[MAX] = {0};
 
     cin >> input;
